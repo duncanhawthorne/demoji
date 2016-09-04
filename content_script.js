@@ -7,9 +7,11 @@ function facebookdemoji() { //facebook
             text = emoji.attr("style");
             textarr = text.split("/")
             text = textarr[textarr.length-1]
-            text = text.substring(0, 5) //1f602.png");
+            textarr = text.split(".")
+            text = textarr[0]
+            //text = text.substring(0, 5) //1f602.png");
             if (text in codeToDescription) {
-            text = codeToDescription[text]
+            text = codeToDescription[text][3][0]
             }
         emoji.after("[:" + text + ":]");
     });
@@ -62,9 +64,10 @@ function walk(node)
 function handleText(textNode) 
 {
 	var v = textNode.nodeValue;
-    for(key in iconToDescription){
-    var value = iconToDescription[key];
-    v = v.replace(key, key + "[:"+value+":]");
+    for(key in codeToDescription){
+        var start = codeToDescription[key][0][0]
+        var end = codeToDescription[key][3][0]
+        v = v.replace(start, start + "[:"+end+":]");
     }	
 	textNode.nodeValue = v;
 }
