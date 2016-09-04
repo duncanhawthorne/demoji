@@ -19,9 +19,9 @@ function facebookdemoji() { //facebook
 
 function hangoutsdemoji() { //hangouts, currently doesn't work
     var targetsImg = $("span[class='Pt tGvGdc']");
-    console.log("start")
+    //console.log("start")
     targetsImg.each( function(){
-        console.log("each")
+        //console.log("each")
         var emoji = $(this)
             text = emoji.attr("data-emo");
             if (text in iconToDescription) {
@@ -29,7 +29,7 @@ function hangoutsdemoji() { //hangouts, currently doesn't work
             }        
         emoji.after("[:" + text + ":]");
     });
-    console.log("end")
+    //console.log("end")
 };
 
 function walk(node) 
@@ -73,5 +73,6 @@ function handleText(textNode)
 }
 
 walk(document.body);
-hangoutsdemoji();
 facebookdemoji();
+hangoutsdemoji();
+
